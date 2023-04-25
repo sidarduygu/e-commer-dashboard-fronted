@@ -144,7 +144,13 @@ const getItems = async () => {
 };
 
 const deleteFunc = async (id) => {
-
+ await ProductCategory.delete(id).then((response) => {
+  helper.showSuccess("Daate deleded successfuly");
+  getItems();
+ })
+ .catch((error) => {
+  helper.showError(error);
+ });
 };
 
 const updatePagination = async (newData) => {

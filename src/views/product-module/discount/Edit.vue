@@ -117,7 +117,7 @@ const save = async () => {
 };
 
 onBeforeMount(async () => {
- const discountRes = await Discount.find(route.params.id);
-form.value = discountRes
+const discountRes = await Discount.find(route.params.id);
+form.value = discountRes;
 });
 </script>
