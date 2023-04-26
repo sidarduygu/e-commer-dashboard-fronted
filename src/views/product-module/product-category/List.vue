@@ -145,7 +145,7 @@ const getItems = async () => {
 
 const deleteFunc = async (id) => {
  await ProductCategory.delete(id).then((response) => {
-  helper.showSuccess("Daate deleded successfuly");
+  helper.showSuccess("Date deleded successfuly");
   getItems();
  })
  .catch((error) => {
