@@ -159,7 +159,6 @@ const edit = (id) => {
 };
 
 const getItems = async () => {
-  console.log(getItems)
   const res = await Product.get();
     items.value = res;
 
