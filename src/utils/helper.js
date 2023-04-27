@@ -117,7 +117,6 @@ const helpers = {
     for (let i = 1; i < length; i++) {
       numbers.push(Math.ceil(Math.random() * (from - to) + to));
     }
-
     return numbers;
   },
   toRGB(colors) {
