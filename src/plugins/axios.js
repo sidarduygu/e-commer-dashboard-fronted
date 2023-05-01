@@ -3,7 +3,7 @@ import { useAuthStore } from '@/stores';
 import { helper } from '@/utils/helper';
 
 const axios = axiosOriginal.create({
-  baseURL: 'http://127.0.0.1:8000/api/auth',
+  baseURL: import.meta.env.VITE_API_URL,
   timeout: 5000,
   headers: {
     "Accept": 'application/json',

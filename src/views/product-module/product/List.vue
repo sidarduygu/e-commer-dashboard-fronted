@@ -57,7 +57,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="(item, index) in items" :key="index" class="intro-x">
+          <tr v-for="(item, index) in items.data" :key="index" class="intro-x">
             <td class="w-40">
               {{ item.id }}
             </td>
@@ -66,7 +66,7 @@
                 <img class="w-8 h-8" :src="item.images[0].image_url" />
               </span>
             </td>
-            <td class="w-40">{{ item.name.substring(0, 20) }}...</td>
+            <td class="w-40">{{ item.name }}...</td>
             <td>
               {{ item.price }}
             </td>
@@ -82,12 +82,16 @@
             </td>
 
             <td class="text-center">
-              <span
-                :class="item.status == 1 ? 'bg-success' : 'bg-danger'"
-                class="py-1 px-4 rounded-xl text-white"
+              <div
+                class="flex items-center justify-center"
+                :class="{
+                  'text-success': item.status == 1,
+                  'text-danger': item.status == 0,
+                }"
               >
-                {{ item.status }}
-              </span>
+                <CheckSquareIcon class="w-4 h-4 mr-2" />
+                {{ item.status == 1 ? "Active" : "Inactive" }}
+              </div>
             </td>
             <td class="w-56 table-report__action">
               <div class="flex items-center justify-center">
