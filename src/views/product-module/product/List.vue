@@ -154,8 +154,11 @@ import { ref, onBeforeMount } from "vue";
 import router from "@/router";
 import Product from "@/api/product";
 import PaginationComponent from "@/components/table/Pagination.vue";
+import { helper } from "@/utils/helper";
+
 const items = ref([]);
 
+const deleteConfirmationModal = ref(false);
 
 
 const edit = (id) => {
@@ -169,7 +172,11 @@ const getItems = async () => {
 };
 
 const deleteFunc = async (id) => {
-
+  await Product.delete(id)
+    .then((response) => {
+      helper.showSuccess("Data deleted successfuly");
+      getItems();
+    })
 };
 
 const updatePagination = async (newData) => {
