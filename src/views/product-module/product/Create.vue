@@ -769,6 +769,7 @@ import { ref, onBeforeMount } from "vue";
 import vSelect from "vue-select";
 import "vue-select/dist/vue-select.css";
 import Shipping from "@/api/shipping";
+import router from "@/router";
 import ProductCategory from "@/api/productcategory";
 import Discount from "@/api/discount";
 import ProductVariant from "@/api/productvariant";
@@ -817,10 +818,10 @@ const product_variants = ref([]);
 
 const save = async () => {
   const formData = transformData();
-  console.log(transformData)
   await Product.create(formData, {
     "Content-Type": "multipart/form-data",
   }).then((response) => {
+     router.push({name: 'product-list'});
     console.log(response)
   });
 }
@@ -846,19 +847,19 @@ const removeImage = (index) => {
 
 const getShippings = () => {
   Shipping.get().then((res) => {
-    shippings.value = res;
+    shippings.value = res.data;
   })
 };
 
 const getProductCategories = () => {
   ProductCategory.get().then((res) => {
-    product_categories.value = res;
+    product_categories.value = res.data;
   })
 };
 
 const getDiscounts = () => {
   Discount.get().then((res) => {
-    discounts.value = res;
+    discounts.value = res.data;
   })
 };
 

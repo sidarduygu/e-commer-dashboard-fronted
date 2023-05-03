@@ -66,7 +66,7 @@
                 <img class="w-8 h-8" :src="item.images[0].image_url" />
               </span>
             </td>
-            <td class="w-40">{{ item.name }}...</td>
+            <td class="w-40">{{ item.name }}</td>
             <td>
               {{ item.price }}
             </td>

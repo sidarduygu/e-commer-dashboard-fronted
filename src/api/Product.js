@@ -20,10 +20,11 @@ export default class Product {
     return post('/product', data ,headers);
   }
 
-  static async update(data) {
-    return patch(`/product/${data.id}`, data);
+  static async update(data, headers) {
+    const id = data.get("id");
+    const response = await post(`${'product'}/${id}`, data,  headers);
+    return response;
   }
-
   static async delete(id) {
     return _delete(`/product/${id}`);
   }

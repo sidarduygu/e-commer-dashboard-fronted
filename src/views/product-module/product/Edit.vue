@@ -819,11 +819,10 @@ const save = async () => {
     "Content-Type": "multipart/form-data",
   }).then((response) => {
      helper.showSuccess('Data update successfuly')
-     //router.push({name:'product-list'});
+     router.push({name:'product-list'});
   });
 };
 
-//Clean Form Data
 const transformData = () => {
   const formData = new FormData();
   Object.keys(form.value).forEach((key) => {
@@ -849,7 +848,7 @@ const transformData = () => {
   return formData;
 };
 
-//Get Variants From API
+
 const getVariants = () => {
   const res = ProductVariant.get().then(
     (response) => (product_variants.value = response)
@@ -862,16 +861,16 @@ const getDiscounts = () => {
   );
 };
 
-//Get Product Categories From API
+
 const getProductCategories = () => {
-  const res = Shipping.get().then(
-    (response) => (shippings.value = response)
+  const res = ProductCategory.get().then(
+    (response) => (product_categories.value = response.data)
   );
 };
 
 const getShippings = () => {
-  const res = ProductCategory.get().then(
-    (response) => (product_categories.value = response.data)
+  const res = Shipping.get().then(
+    (response) => (shippings.value = response.data)
   );
 };
 
